@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env.*
+.pnpm-store/
+.worktrees/
+.worktrees-data/
+.workbuddy/
+
+# Scraped personal data (your bookmarks, other people's tweets, DOM snapshots).
+# Keep out of git by default; commit only a sanitized subset if tests need it.
+fixtures
+fixtures/
+packages/eval/REPORT.md

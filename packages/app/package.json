@@ -1,0 +1,38 @@
+{
+  "name": "@bookmark-agent/app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/main/index.js",
+  "scripts": {
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build",
+    "build": "pnpm run build:main && pnpm run build:renderer",
+    "dev:renderer": "vite",
+    "start": "electron .",
+    "typecheck": "tsc -p tsconfig.main.json --noEmit && tsc -p tsconfig.renderer.json --noEmit",
+    "test": "vitest run",
+    "rebuild:electron": "npx @electron/rebuild -f -w better-sqlite3"
+  },
+  "dependencies": {
+    "@bookmark-agent/agent-core": "workspace:*",
+    "@bookmark-agent/catalog": "workspace:*",
+    "@bookmark-agent/collections-mcp": "workspace:*",
+    "better-sqlite3": "*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "*",
+    "@types/node": "*",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^35.0.0",
+    "typescript": "*",
+    "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+    "vitest": "*"
+  }
+}

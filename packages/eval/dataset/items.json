@@ -1,0 +1,1993 @@
+[
+  {
+    "id": "1000000000000000001",
+    "source": "x",
+    "order": 0,
+    "url": "https://x.com/agent_lab/status/1000000000000000001",
+    "author": {
+      "handle": "agent_lab",
+      "name": "Agent Lab"
+    },
+    "time": "2026-11-20T12:00:00.000Z",
+    "title": "LLM Agent 工具循环与双面 MCP 权限门控实践",
+    "text": "梳理个人 Agent 接入 MCP Server 的核心工程实践：将模型可见的读写工具与客户端专用 app_* 工具彻底隔离，所有写操作强制经过用户确认钩子。",
+    "articleText": "在本地优先的 Agent 架构中，MCP（Model Context Protocol）将底层检索与数据源解耦。为了防止模型误调用管理接口，我们在桥接层屏蔽 app_* 前缀工具，并对 add/update/remove 强制施加 beforeToolCall 确认拦截，同时利用服务端宏展开避免模型复述数据库原文。",
+    "kind": "article",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "介绍个人 Agent 接入 MCP 的双面工具隔离架构与写操作确认机制。",
+      "topics": [
+        "Agent 架构",
+        "MCP",
+        "权限确认",
+        "上下文压缩"
+      ],
+      "kind": "reference",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000002",
+    "source": "x",
+    "order": 1,
+    "url": "https://x.com/eval_ops/status/1000000000000000002",
+    "author": {
+      "handle": "eval_ops",
+      "name": "Eval Ops"
+    },
+    "time": "2026-11-20T11:00:00.000Z",
+    "title": "Offline Evals for Tool-Using Agents: Precision & Latency Tradeoffs",
+    "text": "Our new benchmark compares 3-stage agent tool grounding, compile pass rate, and ID hallucination checks across 20 scripted scenarios.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "通过 20 个脚本化场景评测工具调用准确率、UI 编译率与引用 ID 真实性。",
+      "topics": [
+        "Agent Evals",
+        "Tool Calling",
+        "LLM",
+        "Benchmark"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000003",
+    "source": "x",
+    "order": 2,
+    "url": "https://x.com/prompt_eng/status/1000000000000000003",
+    "author": {
+      "handle": "prompt_eng",
+      "name": "Prompt Eng"
+    },
+    "time": "2026-11-20T10:00:00.000Z",
+    "title": "Structured A2UI Streaming Compilation & Macro Expansion",
+    "text": "Instead of letting LLMs hallucinate card metadata, emit lightweight a2ui JSON blocks with IDs only and expand records server-side with 1x repair retry.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "展示 A2UI 流式拦截编译、服务端宏展开与单次失败修复降级机制。",
+      "topics": [
+        "A2UI",
+        "LLM",
+        "Streaming",
+        "Generative UI"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000004",
+    "source": "x",
+    "order": 3,
+    "url": "https://x.com/context_dev/status/1000000000000000004",
+    "author": {
+      "handle": "context_dev",
+      "name": "Context Dev"
+    },
+    "time": "2026-11-20T09:00:00.000Z",
+    "title": "长上下文滑动窗口与历史 Surface 反编译压缩策略",
+    "text": "多轮生成式 UI 对话中，只将当前活跃 Surface 反编译为紧凑 Express 语法，历史轮次折叠为单行摘要，显著节省上下文 Token。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "通过 Express 反编译活跃界面与折叠历史界面来控制多轮对话 Token 开销。",
+      "topics": [
+        "上下文压缩",
+        "Agent 架构",
+        "A2UI",
+        "Token 优化"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000005",
+    "source": "x",
+    "order": 4,
+    "url": "https://x.com/eval_ops/status/1000000000000000005",
+    "author": {
+      "handle": "eval_ops",
+      "name": "Eval Ops"
+    },
+    "time": "2026-11-20T08:00:00.000Z",
+    "title": "How to Build Deterministic Scripted Eval Suites for Coding Agents",
+    "text": "Pair scripted LLM turns with live judge rubrics so CI catches tool regressions before shipping prompt updates.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "结合确定性脚本与规则打分构建可进入 CI 的 Agent 回归评测集。",
+      "topics": [
+        "Agent Evals",
+        "CI Testing",
+        "LLM",
+        "Benchmark"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000006",
+    "source": "x",
+    "order": 5,
+    "url": "https://x.com/agent_lab/status/1000000000000000006",
+    "author": {
+      "handle": "agent_lab",
+      "name": "Agent Lab"
+    },
+    "time": "2026-11-20T07:00:00.000Z",
+    "title": "Multi-Model Quota Overflow & Rate Limiter Design for Free Tier APIs",
+    "text": "Track per-model RPM/TPM/RPD buckets and overflow automatically to secondary flash/gemma models on daily quota exhaustion.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "设计按模型分桶的令牌限流器并在日配额耗尽时自动溢出到备用模型。",
+      "topics": [
+        "Rate Limiter",
+        "LLM",
+        "Quota",
+        "Agent 架构"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000007",
+    "source": "x",
+    "order": 6,
+    "url": "https://x.com/rag_notes/status/1000000000000000007",
+    "author": {
+      "handle": "rag_notes",
+      "name": "RAG Notes"
+    },
+    "time": "2026-11-20T06:00:00.000Z",
+    "title": "Hybrid FTS5 + Vector RRF Search vs Rerank Scoring",
+    "text": "结合 SQLite FTS5 全文倒排与 Embedding 余弦检索的 RRF 倒数排名融合，在端侧实现毫秒级混合召回。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "对比本地 FTS5 与向量 RRF 混合检索及精判重排的召回表现。",
+      "topics": [
+        "RRF",
+        "混合检索",
+        "LLM",
+        "Embedding"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000001",
+    "source": "xhs",
+    "order": 7,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000001",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000001",
+    "author": {
+      "id": "u_ai_workshop",
+      "handle": "ai_workshop",
+      "name": "AI工坊笔记"
+    },
+    "time": null,
+    "title": "个人知识库 Agent 搭建指南：本地 SQLite + MCP",
+    "text": "无需外接云端向量库，用本机 SQLite 存储结构化条目和向量，再通过 MCP 暴露搜索与精读工具。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "用本地 SQLite 和 MCP 协议快速搭建可离线检索的个人收藏 Agent。",
+      "topics": [
+        "Agent 架构",
+        "MCP",
+        "知识库"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000002",
+    "source": "xhs",
+    "order": 8,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000002",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000002",
+    "author": {
+      "id": "u_prompt_manual",
+      "handle": "prompt_manual",
+      "name": "Prompt手册"
+    },
+    "time": null,
+    "title": "用 Evals 自动检验模型输出 JSON Schema 准确率",
+    "text": "总结结构化卡片抽取场景下的 Schema 约束技巧与离线评测指标设计。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "分享结构化卡片输出的 Schema 校验与自动化 Evals 方法。",
+      "topics": [
+        "Agent Evals",
+        "JSON Schema",
+        "LLM"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000003",
+    "source": "xhs",
+    "order": 9,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000003",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000003",
+    "author": {
+      "id": "u_edge_ai",
+      "handle": "edge_ai",
+      "name": "端侧智能"
+    },
+    "time": null,
+    "title": "多模态 Enrich 卡片提取图文主题词实战",
+    "text": "把短正文和配图一起送入轻量多模态模型生成摘要、主题词与配图说明，大幅提升以图为主的收藏检索命中率。",
+    "kind": "video",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "通过多模态批处理提取摘要与配图描述补齐短文本收藏语义。",
+      "topics": [
+        "多模态",
+        "Enrich",
+        "LLM"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000008",
+    "source": "x",
+    "order": 10,
+    "url": "https://x.com/gpu_craft/status/1000000000000000008",
+    "author": {
+      "handle": "gpu_craft",
+      "name": "GPU Craft"
+    },
+    "time": "2026-11-20T02:00:00.000Z",
+    "title": "WebGPU Canvas Rendering 5,000 Declarative UI Frames at 120fps",
+    "text": "Demonstrating a custom WebGPU Canvas renderer drawing 5,000 interactive HTML/CSS-style frames and over 1M primitives smoothly at 120 fps.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "展示基于 WebGPU Canvas 在 120fps 下流畅渲染数千个交互界面的突破方案。",
+      "topics": [
+        "WebGPU",
+        "Canvas UI",
+        "120fps",
+        "GPU 渲染"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000009",
+    "source": "x",
+    "order": 11,
+    "url": "https://x.com/canvas_ui/status/1000000000000000009",
+    "author": {
+      "handle": "canvas_ui",
+      "name": "Canvas UI"
+    },
+    "time": "2026-11-20T01:00:00.000Z",
+    "title": "Introducing CanvasBox: HTML-in-Canvas Component Primitives",
+    "text": "First composable HTML-in-Canvas UI library bridging declarative layout with GPU-backed canvas rendering pipelines.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "介绍首个将声明式布局与 Canvas GPU 管线结合的 HTML-in-Canvas 组件库。",
+      "topics": [
+        "HTML-in-Canvas",
+        "Canvas UI",
+        "WebGPU",
+        "组件库"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000010",
+    "source": "x",
+    "order": 12,
+    "url": "https://x.com/shader_dev/status/1000000000000000010",
+    "author": {
+      "handle": "shader_dev",
+      "name": "Shader Dev"
+    },
+    "time": "2026-11-20T00:00:00.000Z",
+    "title": "Open-Source 200+ WebGPU & WGSL Shader Effects Collection",
+    "text": "Curated gallery of 200+ composable WGSL shaders, noise fields, and post-processing passes ready for browser apps.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "开源包含 200 多个 WGSL 与 WebGPU 视觉特效着色器的组件集合。",
+      "topics": [
+        "WebGPU",
+        "Shader",
+        "WGSL",
+        "粒子特效"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000011",
+    "source": "x",
+    "order": 13,
+    "url": "https://x.com/three_lab/status/1000000000000000011",
+    "author": {
+      "handle": "three_lab",
+      "name": "Three Lab"
+    },
+    "time": "2026-11-19T23:00:00.000Z",
+    "title": "Procedural 3D Tree Geometry Generator in Three.js",
+    "text": "Parameterize trunk curvature, branching recursion, and canopy leaf clusters directly in Three.js and export lightweight glTF meshes.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "在 Three.js 中参数化程序生成 3D 树木网格并支持导出轻量化模型。",
+      "topics": [
+        "Three.js",
+        "3D 建模",
+        "程序化生成",
+        "植物渲染"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000012",
+    "source": "x",
+    "order": 14,
+    "url": "https://x.com/flora_3d/status/1000000000000000012",
+    "author": {
+      "handle": "flora_3d",
+      "name": "Flora 3D"
+    },
+    "time": "2026-11-19T22:00:00.000Z",
+    "title": "实时 3D 场景中的 2D Billboard 植物朝向相机渲染技巧",
+    "text": "画面中每颗果实与枝叶均采用始终面向相机的 2D billboard 着色器实现，兼顾手绘质感与极低面数开销。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "使用朝向相机的 2D billboard 技术高效渲染风格化三维植被。",
+      "topics": [
+        "3D 建模",
+        "Billboard",
+        "Shader",
+        "植物渲染"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000013",
+    "source": "x",
+    "order": 15,
+    "url": "https://x.com/three_lab/status/1000000000000000013",
+    "author": {
+      "handle": "three_lab",
+      "name": "Three Lab"
+    },
+    "time": "2026-11-19T21:00:00.000Z",
+    "title": "Three.js + TSL Node Shader Particle Field Tutorial",
+    "text": "Step-by-step walkthrough of Three Shading Language (TSL) compute buffers driving 300k GPU particles in WebGPU.",
+    "articleText": "Three Shading Language (TSL) unifies WebGL and WebGPU shader authoring in JavaScript. By storing particle positions and velocities in storage buffers and updating them via compute nodes, scenes stay well above 60fps on integrated GPUs.",
+    "kind": "article",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "详解如何结合 Three.js 与 TSL 节点着色器驱动大规模 GPU 粒子特效。",
+      "topics": [
+        "Three.js",
+        "TSL",
+        "粒子特效",
+        "Shader"
+      ],
+      "kind": "reference",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000014",
+    "source": "x",
+    "order": 16,
+    "url": "https://x.com/blender_notes/status/1000000000000000014",
+    "author": {
+      "handle": "blender_notes",
+      "name": "Blender Notes"
+    },
+    "time": "2026-11-19T20:00:00.000Z",
+    "title": "Blender Geometry Nodes Foliage Pipeline for WebGL Export",
+    "text": "Convert procedural Blender canopy instances into compressed vertex-color attributes for fast browser rendering.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "介绍将 Blender 几何节点生成的植被资产压缩导出至 Web 端的流程。",
+      "topics": [
+        "Blender",
+        "3D 建模",
+        "WebGL"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000004",
+    "source": "xhs",
+    "order": 17,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000004",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000004",
+    "author": {
+      "id": "u_gfx_lab",
+      "handle": "gfx_lab",
+      "name": "图形学实验室"
+    },
+    "time": null,
+    "title": "WebGPU Compute Shader 百万粒子实时仿真",
+    "text": "从零编写 WGSL 计算着色器，利用 Ping-Pong Buffer 实现流场交互粒子。",
+    "kind": "video",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "演示用 WebGPU Compute Shader 实现百万级实时流场粒子仿真。",
+      "topics": [
+        "WebGPU",
+        "Shader",
+        "粒子特效"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000005",
+    "source": "xhs",
+    "order": 18,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000005",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000005",
+    "author": {
+      "id": "u_3d_notes",
+      "handle": "3d_notes",
+      "name": "三维手记"
+    },
+    "time": null,
+    "title": "Three.js 风格化草地与树叶着色器拆解",
+    "text": "分享风吹摆动顶点位移、半透明次表面散射与 LOD 优化参数。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "拆解 Three.js 风格化植物与树叶着色器的风动及光照实现。",
+      "topics": [
+        "Three.js",
+        "Shader",
+        "3D 建模"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000006",
+    "source": "xhs",
+    "order": 19,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000006",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000006",
+    "author": {
+      "id": "u_fe_visual",
+      "handle": "fe_visual",
+      "name": "前端视觉志"
+    },
+    "time": null,
+    "title": "Canvas 2D 与 WebGPU 混合渲染交互面板对比",
+    "text": "测试大规模图表与节点画布在不同渲染后端下的帧率稳定性与内存占用。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "对比 Canvas 2D 与 WebGPU 在高密度节点画布下的帧率与内存表现。",
+      "topics": [
+        "Canvas UI",
+        "WebGPU",
+        "交互设计"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000015",
+    "source": "x",
+    "order": 20,
+    "url": "https://x.com/rust_sys/status/1000000000000000015",
+    "author": {
+      "handle": "rust_sys",
+      "name": "Rust Sys"
+    },
+    "time": "2026-11-19T16:00:00.000Z",
+    "title": "Rust GPUI Desktop Component Architecture: Zero-Copy Layouts",
+    "text": "基于 Rust GPUI 框架打造原生 GPU 加速桌面组件库，利用强类型实体树与帧级缓存实现极低延迟界面渲染。",
+    "articleText": "GPUI merges immediate-mode simplicity with retained layout caching on native Metal and Vulkan backends. Compared to DOM-based desktop shells, Rust GPUI keeps idle memory under 40MB while handling complex split-pane text views.",
+    "kind": "article",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "剖析基于 Rust GPUI 框架构建高性能原生桌面组件库的渲染与内存架构。",
+      "topics": [
+        "Rust",
+        "GPUI",
+        "桌面组件库",
+        "GPU UI"
+      ],
+      "kind": "reference",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000016",
+    "source": "x",
+    "order": 21,
+    "url": "https://x.com/tokio_dev/status/1000000000000000016",
+    "author": {
+      "handle": "tokio_dev",
+      "name": "Tokio Dev"
+    },
+    "time": "2026-11-19T15:00:00.000Z",
+    "title": "Deep Dive into Tokio Work-Stealing Async Scheduler Internals",
+    "text": "解析 Tokio 多线程工作窃取调度器的 LIFO 本地槽位设计、任务唤醒开销以及异步运行时调优准则。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "深入拆解 Rust Tokio 异步运行时工作窃取调度器原理与性能调优。",
+      "topics": [
+        "Rust",
+        "Tokio",
+        "异步运行时",
+        "系统编程"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000017",
+    "source": "x",
+    "order": 22,
+    "url": "https://x.com/sqlite_pro/status/1000000000000000017",
+    "author": {
+      "handle": "sqlite_pro",
+      "name": "SQLite Pro"
+    },
+    "time": "2026-11-19T14:00:00.000Z",
+    "title": "SQLite WAL Mode + FTS5 Trigram Indexing for CJK & English Search",
+    "text": "利用 SQLite FTS5 trigram 分词器配合两字短词 LIKE 降级，在中英文混排本地库中实现毫秒级全文搜索。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "用 SQLite WAL 与 FTS5 trigram 配合短词降级方案解决中英文混合全文检索。",
+      "topics": [
+        "SQLite",
+        "FTS5",
+        "中文分词",
+        "数据库优化"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000018",
+    "source": "x",
+    "order": 23,
+    "url": "https://x.com/rust_sys/status/1000000000000000018",
+    "author": {
+      "handle": "rust_sys",
+      "name": "Rust Sys"
+    },
+    "time": "2026-11-19T13:00:00.000Z",
+    "title": "Building High-Throughput Local Vector Indexes Without Native Extensions",
+    "text": "Benchmarks showing flat Float32Array cosine scans over 5,000 normalized 768-dim vectors take under 2ms in V8 and <0.2ms in Rust.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "实测数千条 768 维归一化向量在内存线性扫描下即可实现亚毫秒级检索。",
+      "topics": [
+        "Vector Index",
+        "Rust",
+        "性能优化",
+        "Cosine"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000019",
+    "source": "x",
+    "order": 24,
+    "url": "https://x.com/cli_craft/status/1000000000000000019",
+    "author": {
+      "handle": "cli_craft",
+      "name": "CLI Craft"
+    },
+    "time": "2026-11-19T12:00:00.000Z",
+    "title": "Profiling Node.js & Rust IPC Overhead in Electron Utility Processes",
+    "text": "Moving SQLite, embeddings, and stdio MCP bridges into an Electron utilityProcess keeps the renderer thread completely jank-free.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "将 MCP 子进程与向量计算隔离至 Electron utilityProcess 避免阻塞界面渲染。",
+      "topics": [
+        "Electron",
+        "IPC",
+        "性能优化",
+        "系统架构"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000020",
+    "source": "x",
+    "order": 25,
+    "url": "https://x.com/tokio_dev/status/1000000000000000020",
+    "author": {
+      "handle": "tokio_dev",
+      "name": "Tokio Dev"
+    },
+    "time": "2026-11-19T11:00:00.000Z",
+    "title": "Zero-Allocation Streaming Parsers in Rust with Nom & Bytes",
+    "text": "Avoid intermediate string copies when parsing SSE event streams and JSONL datasets in memory-constrained CLI workers.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "分享利用 Nom 与 Bytes 在 Rust 中编写零分配 SSE/JSONL 流式解析器。",
+      "topics": [
+        "Rust",
+        "Zero-Allocation",
+        "Parser",
+        "系统编程"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000021",
+    "source": "x",
+    "order": 26,
+    "url": "https://x.com/sqlite_pro/status/1000000000000000021",
+    "author": {
+      "handle": "sqlite_pro",
+      "name": "SQLite Pro"
+    },
+    "time": "2026-11-19T10:00:00.000Z",
+    "title": "Transactional Tombstones & User-Override Sync Patterns in Local-First Apps",
+    "text": "Record deleted_at tombstones and per-field user_overrides JSON maps so incremental re-syncs never resurrect deleted items or clobber edits.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "用软删除墓碑与字段级覆盖标记确保增量同步不覆盖用户编辑。",
+      "topics": [
+        "Local-First",
+        "SQLite",
+        "数据同步",
+        "系统架构"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000022",
+    "source": "x",
+    "order": 27,
+    "url": "https://x.com/mac_infra/status/1000000000000000022",
+    "author": {
+      "handle": "mac_infra",
+      "name": "Mac Infra"
+    },
+    "time": "2026-11-19T09:00:00.000Z",
+    "title": "macOS Keychain & Electron safeStorage Credential Isolation Notes",
+    "text": "Store API keys in OS safeStorage and inject into worker env vars at spawn time so renderer processes never see plaintext secrets.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "结合系统 Keychain 与 Electron safeStorage 实现凭证隔离与子进程注入。",
+      "topics": [
+        "macOS",
+        "安全存储",
+        "Electron"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000007",
+    "source": "xhs",
+    "order": 28,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000007",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000007",
+    "author": {
+      "id": "u_sys_notes",
+      "handle": "sys_notes",
+      "name": "系统架构笔记"
+    },
+    "time": null,
+    "title": "SQLite FTS5 trigram 短词回退 LIKE 检索优化",
+    "text": "当搜索词不足三个字符时自动切回 LIKE 查询并配合触发器保持索引同步。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "记录 SQLite FTS5 trigram 在中文两字短词查询下的回退与索引触发器实践。",
+      "topics": [
+        "SQLite",
+        "FTS5",
+        "全文检索"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000008",
+    "source": "xhs",
+    "order": 29,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000008",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000008",
+    "author": {
+      "id": "u_rust_club",
+      "handle": "rust_club",
+      "name": "Rust研习社"
+    },
+    "time": null,
+    "title": "Rust GPUI 与 WebGPU 前端渲染路线对比笔记",
+    "text": "对比原生 GPUI 桌面应用开发成本与浏览器 WebGPU Canvas 的跨平台分发优势。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "对比 Rust 原生 GPUI 与浏览器 WebGPU 两种高性能 UI 路线的优缺点。",
+      "topics": [
+        "Rust",
+        "GPUI",
+        "GPU UI"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000023",
+    "source": "x",
+    "order": 30,
+    "url": "https://x.com/motion_ui/status/1000000000000000023",
+    "author": {
+      "handle": "motion_ui",
+      "name": "Motion UI"
+    },
+    "time": "2026-11-19T06:00:00.000Z",
+    "title": "Spring Physics Micro-Interactions: Damping & Velocity Hand-Off",
+    "text": "Interruptible spring animations preserve gesture velocity so drawer transitions and card previews feel tactile and responsive.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "探讨可中断弹簧动效的阻尼与速度继承参数，打造跟手微交互体验。",
+      "topics": [
+        "UI 动效",
+        "微交互",
+        "弹簧曲线",
+        "交互设计"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000024",
+    "source": "x",
+    "order": 31,
+    "url": "https://x.com/design_sys/status/1000000000000000024",
+    "author": {
+      "handle": "design_sys",
+      "name": "Design Sys"
+    },
+    "time": "2026-11-19T05:00:00.000Z",
+    "title": "Designing Compact Split-Pane Knowledge Interfaces with Design Tokens",
+    "text": "Pairing a focused conversational pane with a virtualized reference grid creates spatial memory without crowding narrow screens.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "用左右分栏对话加虚拟网格的设计 Token 构建高信息密度知识工作台。",
+      "topics": [
+        "设计系统",
+        "UI 布局",
+        "交互设计"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000025",
+    "source": "x",
+    "order": 32,
+    "url": "https://x.com/motion_ui/status/1000000000000000025",
+    "author": {
+      "handle": "motion_ui",
+      "name": "Motion UI"
+    },
+    "time": "2026-11-19T04:00:00.000Z",
+    "title": "60fps CSS Anchor Positioning & View Transitions for Card Expansion",
+    "text": "Use native CSS anchor positioning and view-transition-name rules to morph compact grid cards into detail overlays with zero layout thrash.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "利用原生 CSS Anchor Positioning 与 View Transitions 实现无抖动卡片展开动效。",
+      "topics": [
+        "UI 动效",
+        "CSS",
+        "View Transitions",
+        "微交互"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000026",
+    "source": "x",
+    "order": 33,
+    "url": "https://x.com/proto_lab/status/1000000000000000026",
+    "author": {
+      "handle": "proto_lab",
+      "name": "Proto Lab"
+    },
+    "time": "2026-11-19T03:00:00.000Z",
+    "title": "Interactive Drag-and-Drop Queue Prototypes Without Heavy Frameworks",
+    "text": "Lightweight pointer-event state machine for triaging pending items into category buckets smoothly.",
+    "kind": "video",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "分享不依赖重型库实现流畅拖拽归类待确认队列的交互原型方法。",
+      "topics": [
+        "交互原型",
+        "微交互",
+        "UI 动效"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000027",
+    "source": "x",
+    "order": 34,
+    "url": "https://x.com/design_sys/status/1000000000000000027",
+    "author": {
+      "handle": "design_sys",
+      "name": "Design Sys"
+    },
+    "time": "2026-11-19T02:00:00.000Z",
+    "title": "Accessible Keyboard Navigation & Focus Management in Virtualized Grids",
+    "text": "Keep virtualized scroll items keyboard-reachable with roving tabindex and smooth scroll-into-view highlights.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "阐述虚拟滚动网格中的键盘焦点管理与定位高亮无障碍实现。",
+      "topics": [
+        "无障碍",
+        "虚拟列表",
+        "设计系统"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000009",
+    "source": "xhs",
+    "order": 35,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000009",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000009",
+    "author": {
+      "id": "u_motion_studio",
+      "handle": "motion_studio",
+      "name": "动效设计室"
+    },
+    "time": null,
+    "title": "动效设计分享：卡片展开弹簧微交互参数",
+    "text": "整理了一组常用的弹簧阻尼与刚度数值，配合轻微缩放和透明度过渡让收藏卡片弹出更自然。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "分享卡片展开场景下的弹簧动效参数与自然微交互过渡节奏。",
+      "topics": [
+        "UI 动效",
+        "微交互",
+        "弹簧曲线"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000010",
+    "source": "xhs",
+    "order": 36,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000010",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000010",
+    "author": {
+      "id": "u_motion_studio",
+      "handle": "motion_studio",
+      "name": "动效设计室"
+    },
+    "time": null,
+    "title": "不用死记 K 帧：利用缓动曲线做出漂浮悬浮感",
+    "text": "通过错位时间轴和三次贝塞尔曲线组合，快速做出轻盈不生硬的悬浮图标动画。",
+    "kind": "video",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "利用错位时间轴与缓动曲线无需复杂关键帧即可制作漂浮感微交互。",
+      "topics": [
+        "UI 动效",
+        "缓动曲线",
+        "微交互"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000011",
+    "source": "xhs",
+    "order": 37,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000011",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000011",
+    "author": {
+      "id": "u_ux_inspo",
+      "handle": "ux_inspo",
+      "name": "交互灵感库"
+    },
+    "time": null,
+    "title": "双栏 Agent 对话界面的信息层级与卡片间距",
+    "text": "聊天气泡内嵌富交互卡片时控制单屏信息量，并用统一圆角与弱边框区分正文和引用来源。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "拆解双栏对话流中内嵌数据卡片的信息层级与视觉留白原则。",
+      "topics": [
+        "交互设计",
+        "UI 布局",
+        "设计系统"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000012",
+    "source": "xhs",
+    "order": 38,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000012",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000012",
+    "author": {
+      "id": "u_visual_kit",
+      "handle": "visual_kit",
+      "name": "视觉组件集"
+    },
+    "time": null,
+    "title": "极简暗色主题下的高亮边界与玻璃拟态克制原则",
+    "text": "深色界面中避免高饱和边框刺眼，用低透明度描边和层次明度建立清晰分区。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "介绍暗色主题下如何克制使用描边与明度层级提升长期阅读舒适度。",
+      "topics": [
+        "设计系统",
+        "视觉设计",
+        "UI 布局"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000013",
+    "source": "xhs",
+    "order": 39,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000013",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000013",
+    "author": {
+      "id": "u_ux_inspo",
+      "handle": "ux_inspo",
+      "name": "交互灵感库"
+    },
+    "time": null,
+    "title": "右键菜单与相关度分组信号条的交互细节",
+    "text": "为相关性检索结果提供「不相关」反馈入口并按主题信号分组，让用户直观理解推荐理由。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "设计带可解释信号分组和即时纠偏按钮的相关推荐交互视图。",
+      "topics": [
+        "交互设计",
+        "微交互",
+        "信息架构"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000028",
+    "source": "x",
+    "order": 40,
+    "url": "https://x.com/indie_notes/status/1000000000000000028",
+    "author": {
+      "handle": "indie_notes",
+      "name": "Indie Notes"
+    },
+    "time": "2026-11-18T20:00:00.000Z",
+    "title": "Overcoming Task Paralysis: Visualizing Concrete Next Actions to Build Momentum",
+    "text": "当面对复杂项目感到拖延时，不要停留在抽象的抗拒情绪里，而是把下一步动作拆解到具体操作细节，借此刺激行动力启动。",
+    "articleText": "克服拖延的关键在于把模糊的宏大目标翻译成可执行、无歧义的五分钟微小动作。一旦在脑海里清晰预演完第一步的具体操作细节，大脑阻力会迅速下降并进入正反馈循环。",
+    "kind": "article",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "通过极度细致地拆分具体下一步动作细节来打破拖延并启动执行力。",
+      "topics": [
+        "克服拖延",
+        "个人成长",
+        "执行力",
+        "习惯养成"
+      ],
+      "kind": "reference",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000029",
+    "source": "x",
+    "order": 41,
+    "url": "https://x.com/maker_log/status/1000000000000000029",
+    "author": {
+      "handle": "maker_log",
+      "name": "Maker Log"
+    },
+    "time": "2026-11-18T19:00:00.000Z",
+    "title": "The 1% Daily Compounding Rule for Shipping Indie Developer Tools",
+    "text": "Consistent tiny daily improvements compound into polished software without burning out on weekend sprints.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "强调以每天推进 1% 的稳定节奏持续打磨独立开发产品。",
+      "topics": [
+        "独立开发",
+        "个人成长",
+        "行动力",
+        "习惯养成"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000030",
+    "source": "x",
+    "order": 42,
+    "url": "https://x.com/indie_notes/status/1000000000000000030",
+    "author": {
+      "handle": "indie_notes",
+      "name": "Indie Notes"
+    },
+    "time": "2026-11-18T18:00:00.000Z",
+    "title": "A One-Day Focus Reset Framework: Turning Long-Term Goals into Daily Sprints",
+    "text": "Audit stalled habits in a single structured reflection day and distill them into three non-negotiable daily checkpoints.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "提供一套用一天深度复盘并重构长期目标与日常执行节奏的行动框架。",
+      "topics": [
+        "克服拖延",
+        "目标管理",
+        "个人成长"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000031",
+    "source": "x",
+    "order": 43,
+    "url": "https://x.com/plugin_ops/status/1000000000000000031",
+    "author": {
+      "handle": "plugin_ops",
+      "name": "Plugin Ops"
+    },
+    "time": "2026-11-18T17:00:00.000Z",
+    "title": "Curating 40+ Developer Productivity Plugins & Taskboard Workflows",
+    "text": "梳理 40 余个高频开发者效率插件，覆盖任务看板、代码审查、上下文监控与本地自动化流水线。",
+    "articleText": "插件化工作流的核心在于让每个小工具专注单一职责：任务看板负责切分目标，代码审查 Skill 负责把关质量，上下文洞察插件帮助团队及时清理冗余状态。",
+    "kind": "article",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "系统整理涵盖任务看板、上下文洞察与自动化的 40+ 开发者效率插件清单。",
+      "topics": [
+        "效率插件",
+        "工作流",
+        "独立开发",
+        "任务看板"
+      ],
+      "kind": "reference",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000032",
+    "source": "x",
+    "order": 44,
+    "url": "https://x.com/plugin_ops/status/1000000000000000032",
+    "author": {
+      "handle": "plugin_ops",
+      "name": "Plugin Ops"
+    },
+    "time": "2026-11-18T16:00:00.000Z",
+    "title": "Context Inspection & Automated Code Review Plugins in Daily Dev Loops",
+    "text": "把上下文检查与严格 Code Review 插件串联进本地编码循环，显著减少返工与隐性缺陷。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "介绍如何用上下文洞察与自动审查插件完善日常编码工作流。",
+      "topics": [
+        "效率插件",
+        "工作流",
+        "Code Review"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000033",
+    "source": "x",
+    "order": 45,
+    "url": "https://x.com/saas_craft/status/1000000000000000033",
+    "author": {
+      "handle": "saas_craft",
+      "name": "SaaS Craft"
+    },
+    "time": "2026-11-18T15:00:00.000Z",
+    "title": "Local-First Desktop Apps Pricing: One-Time License vs BYOK Cloud",
+    "text": "Why BYOK (Bring Your Own Key) removes marginal AI API cost anxiety for indie local-first desktop software.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "分析本地优先桌面工具采用 BYOK 架构如何降低独立开发者的云端推理成本风险。",
+      "topics": [
+        "独立开发",
+        "商业化",
+        "BYOK"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000034",
+    "source": "x",
+    "order": 46,
+    "url": "https://x.com/maker_log/status/1000000000000000034",
+    "author": {
+      "handle": "maker_log",
+      "name": "Maker Log"
+    },
+    "time": "2026-11-18T14:00:00.000Z",
+    "title": "Reducing Interview & Shipping Anxiety Through Small Reproducible Demos",
+    "text": "用可复现的小型交互 Demo 替代空洞承诺，在公开分享和协作沟通中显著缓解焦虑感。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "建议用最小可复现 Demo 替代心理内耗，稳步推进独立作品发布。",
+      "topics": [
+        "个人成长",
+        "心态调整",
+        "独立开发"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000035",
+    "source": "x",
+    "order": 47,
+    "url": "https://x.com/saas_craft/status/1000000000000000035",
+    "author": {
+      "handle": "saas_craft",
+      "name": "SaaS Craft"
+    },
+    "time": "2026-11-18T13:00:00.000Z",
+    "title": "Writing Clear Technical READMEs & Architecture Diagrams for Open-Source Tools",
+    "text": "Explain cold-start pipelines, privacy boundaries, and offline test suites upfront so contributors can verify locally in two minutes.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "总结开源项目 README 如何清晰阐述数据处理流、隐私边界与本地评测方式。",
+      "topics": [
+        "开源项目",
+        "技术写作",
+        "独立开发"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000014",
+    "source": "xhs",
+    "order": 48,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000014",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000014",
+    "author": {
+      "id": "u_eff_lab",
+      "handle": "eff_lab",
+      "name": "效率实验室"
+    },
+    "time": null,
+    "title": "独立开发者如何用任务看板拆分每日最小行动单元",
+    "text": "将长周期需求拆成当天即可验收的小卡片，配合插件自动同步进度。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "分享利用任务看板拆分最小可交付单元以克服项目拖延的实操经验。",
+      "topics": [
+        "任务看板",
+        "工作流",
+        "克服拖延"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000015",
+    "source": "xhs",
+    "order": 49,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000015",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000015",
+    "author": {
+      "id": "u_product_notes",
+      "handle": "product_notes",
+      "name": "产品笔记"
+    },
+    "time": null,
+    "title": "开源桌面工具的隐私说明与本地密钥存储最佳实践",
+    "text": "发布个人工具前必须排查硬编码路径、个人测试快照和账号标识，确保开箱即用又安全。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "梳理开源桌面应用发布前的脱敏清单、本地加密存储与数据边界说明。",
+      "topics": [
+        "独立开发",
+        "开源项目",
+        "隐私设计"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000036",
+    "source": "x",
+    "order": 50,
+    "url": "https://x.com/brew_kitchen/status/1000000000000000036",
+    "author": {
+      "handle": "brew_kitchen",
+      "name": "Brew Kitchen"
+    },
+    "time": "2026-11-18T10:00:00.000Z",
+    "title": "V60 Pour-Over Extraction: Grind Size, Water Temp & Bloom Ratios",
+    "text": "For washed Ethiopian beans, 93°C water with a 45-second 3x bloom and medium-fine grind highlights floral clarity.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "记录水洗埃塞豆在 V60 手冲下的水温、闷蒸比例与研磨度参考参数。",
+      "topics": [
+        "手冲咖啡",
+        "V60",
+        "萃取参数",
+        "咖啡"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000037",
+    "source": "x",
+    "order": 51,
+    "url": "https://x.com/roast_lab/status/1000000000000000037",
+    "author": {
+      "handle": "roast_lab",
+      "name": "Roast Lab"
+    },
+    "time": "2026-11-18T09:00:00.000Z",
+    "title": "Dialing In Light-Roast Espresso: 1:2.2 Ratio and Pre-Infusion Pressure",
+    "text": "Extending pre-infusion to 8 seconds at 2 bar prevents channeling and unlocks sweetness in dense light-roast single origins.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "说明浅烘单品豆在意式浓缩中通过延长低压预浸泡减少通道效应并提升甜感。",
+      "topics": [
+        "意式浓缩",
+        "咖啡",
+        "萃取参数"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000038",
+    "source": "x",
+    "order": 52,
+    "url": "https://x.com/home_cook/status/1000000000000000038",
+    "author": {
+      "handle": "home_cook",
+      "name": "Home Cook"
+    },
+    "time": "2026-11-18T08:00:00.000Z",
+    "title": "20-Minute High-Protein Stir-Fry Bowls for Busy Weeknights",
+    "text": "Velvet chicken breast slices with cornstarch and soy sauce, then sear over high heat with broccoli and ginger garlic.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "分享 20 分钟即可完成的家常高蛋白快手炒菜盖饭做法。",
+      "topics": [
+        "快手菜",
+        "家常食谱",
+        "备餐"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000039",
+    "source": "x",
+    "order": 53,
+    "url": "https://x.com/roast_lab/status/1000000000000000039",
+    "author": {
+      "handle": "roast_lab",
+      "name": "Roast Lab"
+    },
+    "time": "2026-11-18T07:00:00.000Z",
+    "title": "Water Chemistry for Specialty Coffee: Alkalinity & Magnesium Balance",
+    "text": "Keep GH around 65 ppm and KH near 30 ppm so acidity stays vibrant without tasting hollow or chalky.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "量化探讨精品手冲咖啡冲煮用水硬度与碱度对风味层次的影响。",
+      "topics": [
+        "手冲咖啡",
+        "水质",
+        "咖啡"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "1000000000000000040",
+    "source": "x",
+    "order": 54,
+    "url": "https://x.com/home_cook/status/1000000000000000040",
+    "author": {
+      "handle": "home_cook",
+      "name": "Home Cook"
+    },
+    "time": "2026-11-18T06:00:00.000Z",
+    "title": "Crispy Cast-Iron Garlic Butter Chicken Thighs & Herb Pan Sauce",
+    "text": "Start skin-side down in a cold cast-iron skillet to render fat evenly before basting with thyme and roasted garlic.",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "冷锅下铸铁锅慢煎脆皮鸡腿排并搭配香草蒜香汁的家常食谱。",
+      "topics": [
+        "家常食谱",
+        "铸铁锅",
+        "快手菜"
+      ],
+      "kind": "tutorial",
+      "lang": "en",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000016",
+    "source": "xhs",
+    "order": 55,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000016",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000016",
+    "author": {
+      "id": "u_pour_over_daily",
+      "handle": "pour_over_daily",
+      "name": "手冲日常"
+    },
+    "time": null,
+    "title": "浅烘耶加雪菲 V60 三段式注水冲煮参数记录",
+    "text": "15 克粉配 230 克水，92 度水温分三段绕圈注水，总萃取时间控制在两分十秒。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "整理浅烘耶加雪菲 V60 三段式手冲的水粉比、温度和萃取时间笔记。",
+      "topics": [
+        "手冲咖啡",
+        "V60",
+        "萃取参数"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000017",
+    "source": "xhs",
+    "order": 56,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000017",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000017",
+    "author": {
+      "id": "u_kitchen_notes",
+      "handle": "kitchen_notes",
+      "name": "下厨房笔记"
+    },
+    "time": null,
+    "title": "15 分钟番茄肥牛滑蛋饭：上班族快手晚餐食谱",
+    "text": "番茄炒出沙后加生抽蚝油调味，最后淋入蛋液关火余温焖熟，下饭又快手。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "15 分钟出锅的家常番茄肥牛滑蛋盖饭详细调味与火候步骤。",
+      "topics": [
+        "快手菜",
+        "家常食谱",
+        "晚餐"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000018",
+    "source": "xhs",
+    "order": 57,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000018",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000018",
+    "author": {
+      "id": "u_pour_over_daily",
+      "handle": "pour_over_daily",
+      "name": "手冲日常"
+    },
+    "time": null,
+    "title": "家用磨豆机刻度校准与细粉筛除实测对比",
+    "text": "测试不同刻度下的粒径分布与尾段杂味抑制效果。",
+    "kind": "video",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "实测家用磨豆机零点校准和筛粉对提升手冲干净度的实际效果。",
+      "topics": [
+        "手冲咖啡",
+        "磨豆机",
+        "咖啡"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000019",
+    "source": "xhs",
+    "order": 58,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000019",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000019",
+    "author": {
+      "id": "u_kitchen_notes",
+      "handle": "kitchen_notes",
+      "name": "下厨房笔记"
+    },
+    "time": null,
+    "title": "周末提前备餐：三款低脂高蛋白鸡胸肉腌料配方",
+    "text": "黑椒蜂蜜、蒜香柠檬与奥尔良三种风味提前分装冷藏，工作日煎熟即可。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "适合工作日快速复热的三种高蛋白低脂鸡胸肉腌制与分装食谱。",
+      "topics": [
+        "备餐",
+        "家常食谱",
+        "快手菜"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  },
+  {
+    "id": "600000000000000000000020",
+    "source": "xhs",
+    "order": 59,
+    "url": "https://www.xiaohongshu.com/explore/600000000000000000000020",
+    "canonicalUrl": "https://www.xiaohongshu.com/explore/600000000000000000000020",
+    "author": {
+      "id": "u_home_bakery",
+      "handle": "home_bakery",
+      "name": "居家甜点屋"
+    },
+    "time": null,
+    "title": "免烤箱巴斯克芝士蛋糕：空气炸锅版零失败温度",
+    "text": "奶油奶酪室温软化后顺滑搅拌，空气炸锅 200 度烤 18 分钟即可做出流心质感。",
+    "kind": "post",
+    "bookmarked": true,
+    "media": [],
+    "links": [],
+    "quote": null,
+    "card": null,
+    "enrichedCard": {
+      "summary": "分享无需烤箱、用空气炸锅制作流心巴斯克芝士蛋糕的配方与火候。",
+      "topics": [
+        "甜品",
+        "空气炸锅",
+        "家常食谱"
+      ],
+      "kind": "tutorial",
+      "lang": "zh",
+      "imageCaptions": [],
+      "enrich_model": "synthetic-fixture",
+      "prompt_version": "v1"
+    }
+  }
+]

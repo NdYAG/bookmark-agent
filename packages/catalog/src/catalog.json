@@ -1,0 +1,95 @@
+{
+  "$schema": "https://a2ui.dev/schema/catalog-v0.1.json",
+  "id": "bookmark-agent.collections-v1",
+  "version": "1.0.0",
+  "description": "A2UI Component Catalog for Bookmark Agent (Basic Catalog + Collection Macros)",
+  "components": {
+    "Text": {
+      "category": "basic",
+      "description": "Markdown or plain text block",
+      "props": {
+        "text": { "type": "string", "required": true }
+      }
+    },
+    "Section": {
+      "category": "basic",
+      "description": "Titled section grouping child components",
+      "props": {
+        "title": { "type": "string", "required": true },
+        "subtitle": { "type": "string", "required": false },
+        "children": { "type": "array", "required": false }
+      }
+    },
+    "BadgeList": {
+      "category": "basic",
+      "description": "Row of topic or tag badges",
+      "props": {
+        "items": { "type": "array", "items": { "type": "string" }, "required": true }
+      }
+    },
+    "CollectionCard": {
+      "category": "macro",
+      "description": "Single bookmark card macro. The LLM only passes `id` (and optional `highlight` / `reason`); server expands full title, author, excerpt, cover, topics, and URL via `get_items` so the LLM never fabricates or repeats metadata.",
+      "macro": true,
+      "props": {
+        "id": { "type": "string", "required": true, "description": "Bookmark ID, e.g. 'x:1000000000000000001'" },
+        "highlight": { "type": "string", "required": false, "description": "Optional one-line note on why this bookmark is cited here" },
+        "signals": { "type": "array", "items": { "type": "string" }, "required": false }
+      }
+    },
+    "ItemGrid": {
+      "category": "macro",
+      "description": "Grid of multiple bookmark cards expanded on the server from a list of bookmark IDs.",
+      "macro": true,
+      "props": {
+        "title": { "type": "string", "required": false },
+        "ids": { "type": "array", "items": { "type": "string" }, "required": true },
+        "notes": { "type": "object", "required": false, "description": "Optional map of itemId -> one-line commentary" }
+      }
+    },
+    "ThemeCompare": {
+      "category": "macro",
+      "description": "Side-by-side comparison across 2 or more themes/approaches, each referencing real bookmark IDs.",
+      "macro": true,
+      "props": {
+        "title": { "type": "string", "required": true },
+        "dimensions": { "type": "array", "items": { "type": "string" }, "required": false },
+        "columns": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "theme": { "type": "string", "required": true },
+              "summary": { "type": "string", "required": true },
+              "pros": { "type": "array", "items": { "type": "string" } },
+              "cons": { "type": "array", "items": { "type": "string" } },
+              "itemIds": { "type": "array", "items": { "type": "string" }, "required": true }
+            }
+          }
+        }
+      }
+    },
+    "Timeline": {
+      "category": "macro",
+      "description": "Chronological or progression timeline connecting bookmarks over time or learning stages.",
+      "macro": true,
+      "props": {
+        "title": { "type": "string", "required": true },
+        "steps": {
+          "type": "array",
+          "required": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string", "required": true },
+              "date": { "type": "string", "required": false },
+              "takeaway": { "type": "string", "required": true },
+              "itemIds": { "type": "array", "items": { "type": "string" }, "required": true }
+            }
+          }
+        }
+      }
+    }
+  }
+}

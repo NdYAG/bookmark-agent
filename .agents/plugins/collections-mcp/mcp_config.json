@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "collections": {
+      "command": "node",
+      "args": [
+        "packages/collections-mcp/dist/server.js"
+      ]
+    }
+  }
+}

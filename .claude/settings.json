@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(~/.agent-browser/**)",
+      "Read(~/.config/browser-login/profiles/**)",
+      "Bash(*/.agent-browser/*)",
+      "Bash(*~/.agent-browser*)",
+      "Bash(agent-browser * cookies*)",
+      "Bash(agent-browser * storage*)",
+      "Bash(agent-browser * network*)",
+      "Bash(agent-browser * state show*)",
+      "Bash(agent-browser * state save*)",
+      "Bash(security find-generic-password*)"
+    ]
+  }
+}
